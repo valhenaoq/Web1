@@ -1,0 +1,123 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+}
+
+/* Variables de color */
+:root {
+    --color-principal: #20232a;
+    --color-fondo: #f0f0f0;
+    --color-texto: #222;
+}
+
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+/* organizo estilo de las tarjetas Box */
+
+.tarjeta-personaje {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* agrega sombra suave a la tarjeta*/
+}
+
+.tarjeta-personaje img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* nombre personajes*/
+.tarjeta-personaje h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* lista de información*/
+.tarjeta-personaje ul {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+/* titulo RESULTADOS*/ 
+#resultados {
+    padding: 20px;
+}
+
+#resultados h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header {
+    background-color: var(--color-principal);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+}
+
+header p {
+    margin: 0;
+}
+
+/* seccion BUSQUEDA*/
+#busqueda {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+#busqueda h2 {
+    margin-top: 0;
+}
+
+#formulario-busqueda {
+    margin-top: 15px;
+}
+
+#formulario-busqueda label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#formulario-busqueda input,
+#formulario-busqueda select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* boton BUSCAR*/
+#formulario-busqueda button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#formulario-busqueda button:hover {
+    background-color: #3a3f47;
+}
