@@ -24,16 +24,19 @@ body {
     background-color: white;
     border: 1px solid #ccc;
     padding: 20px;
-    margin: 20px;
+    margin: 0;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* agrega sombra suave a la tarjeta*/
+    display: flex; /*Convierte la tarjeta en un contenedor Flexbox*/
+    flex-direction: column; /* los elementos se organizan de arriba hacia abajo*/
+    min-height: 420px; /*altura minima*/
 }
 
 .tarjeta-personaje img {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 50%; /*para que las imagenes se vean en circulo*/
     display: block;
     margin: 0 auto;
 }
@@ -49,6 +52,7 @@ body {
 .tarjeta-personaje ul {
     padding-left: 20px;
     line-height: 1.8;
+    margin-bottom: 0; /*El navegador coloca automáticamente un margen en las listas*/
 }
 
 /* titulo RESULTADOS*/ 
@@ -120,4 +124,13 @@ header p {
 
 #formulario-busqueda button:hover {
     background-color: #3a3f47;
+}
+
+
+/*GRID*/
+.contenedor-personajes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch; /* los elementos del Grid se estiran para ocupar la altura disponible de su fila*/
 }
