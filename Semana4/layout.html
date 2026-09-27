@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultados — Réplica de layout</title>
+  <link rel="stylesheet" href="css/layout.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <header class="cabecera">
+    <a class="logo" href="#">MiTienda</a>
+    <input class="buscador" type="search" placeholder="Buscar productos…" aria-label="Buscar">
+    <nav>
+      <ul class="menu">
+        <li><a href="#">Ofertas</a></li>
+        <li><a href="#">Categorías</a></li>
+        <li><a href="#">Mi cuenta</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="filtros">
+    <h2>Filtros</h2>
+    <fieldset>
+      <legend>Categoría</legend>
+      <label><input type="checkbox" name="cat" value="tecnologia"> Tecnología</label>
+      <label><input type="checkbox" name="cat" value="hogar"> Hogar</label>
+      <label><input type="checkbox" name="cat" value="ropa"> Ropa</label>
+    </fieldset>
+    <fieldset>
+      <legend>Precio</legend>
+      <label>Mín <input type="number" name="min" min="0"></label>
+      <label>Máx <input type="number" name="max" min="0"></label>
+    </fieldset>
+    <fieldset>
+      <legend>Ordenar por</legend>
+      <label><input type="radio" name="orden" value="precio" checked> Precio</label>
+      <label><input type="radio" name="orden" value="nombre"> Nombre</label>
+    </fieldset>
+  </aside>
+
+  <main class="resultados">
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 1</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 2</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 3</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 4</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 5</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 6</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 7</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 8</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 9</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 10</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 11</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>Producto 12</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+
+    <!--
+    
+    <article class="tarjeta">
+      <img src="https://picsum.photos/300/200" alt="Producto de ejemplo">
+      <h3>dfjjgsh g h sugih iufg fgh fuigh iufhg iufgghi iuh pg hofh ohu thoajgoihsfho sfoihagofhàouifhò aoasofoahhhag fdah oiad hodah oahòhoadhah aoahoaoua goihoadfghaou ghoa</h3>
+      <p>Descripción corta del producto.</p>
+      <p class="precio">$99.900</p>
+      <button>Agregar</button>
+    </article>
+    -->
+
+    
+    
+    <!-- Duplica la tarjeta hasta tener 12. Atajo Emmet (escríbelo y pulsa Tab):
+         article.tarjeta*12>img[src="https://picsum.photos/300/200"][alt="Producto"]+h3{Producto $}+p{Descripción corta del producto.}+p.precio{$99.900}+button{Agregar} -->
+  </main>
+
+  <footer class="pie">
+    <div><h4>Empresa</h4><a href="#">Quiénes somos</a><a href="#">Empleo</a></div>
+    <div><h4>Ayuda</h4><a href="#">Envíos</a><a href="#">Devoluciones</a></div>
+    <div><h4>Legal</h4><a href="#">Términos</a><a href="#">Privacidad</a></div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+*,*::before, *::after { box-sizing: border-box; }
+
+:root {
+
+    --primary-color: #2c511d;
+    --secondary-color: #52a072;
+    --text-color: #2c511d;
+    --background-color: #bdd4a5;
+    --border-color: #2c511d;
+
+   /* modo oscuro
+    --primary-color: #116831;
+    --secondary-color: #135f2f;
+    --text-color: #135836;
+    --background-color: #121813;
+    --card-background: #1e2620;
+    --border-color: #344e30;
+    --shadow-color: #2c511d;
+*/
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 80px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+figure img {
+    margin: 20px 0;
+    border-radius: 50%;
+    border: white 4px solid;
+}
+
+/*quitar estilos*/
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/*quitar subrayado de enlaces*/
+a {
+    text-decoration: none;
+    color: #2c511d;
+}
+
+/*hovver: efecto al pasar el mouse por encima de un enlace*/
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    border-radius: 5px;
+}
+
+/*clase tarjeta*/
+.tarjeta {
+    background-color: white;
+    border: 1px solid var(--border-color);  
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*tabla*/
+table {
+    width: 100%;
+    border-collapse: collapse;  
+    padding: 20px;
+}
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    text-align: left;
+}
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/*formulario*/
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+input:not(:focus):invalid {
+    border-color: red;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    background-color: white;
+    border-radius: 5px;
+}

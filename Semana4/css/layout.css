@@ -1,0 +1,280 @@
+*,*::before,*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* selector(a quien lo aplico), propiedad(qué cambio), valor(a qué lo cambio) */
+:root {
+  --primary-color: #0D1821;
+  --secondary-color: #344966;
+  --background-color: #F0F4F8;
+  --color-accent: #F95738;
+  --color-border: #8B9D83;
+  --color-text: #BEB0A7;
+  --font-family: system-ui, -apple-system, sans-serif;
+  --font-size: 16px;
+  --line-height: 1.5;
+
+  --radio-campo: 8px;
+
+ 
+}
+
+
+
+html {
+  scroll-padding: 50px;
+}
+
+body{
+  font-family: var(--primary-color);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--background-color);
+  font-size: 1rem;
+
+  display: grid;
+  grid-template-columns: var(--color-border) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "aside filtros"
+    "main resultados"
+    "footer footer";
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color:inherit
+}
+
+:focus-visible{
+  outline: 3px solid var(yellow) ;
+  outline-offset: 2px;
+}
+
+
+.cabecera{
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+ 
+  
+}
+
+.logo {
+  font-family: var(--color-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.buscador {
+  display: flex;
+  max-width: 100%;
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background-color: white;
+  color: var(--secondary-color);
+  outline: none;
+  border-radius: var(--radio-campo);
+}
+
+nav {
+  margin-left: auto;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.filtros {
+  grid-area: aside;
+  background-color: var(--secondary-color);
+  padding: var(--spacing-grid);
+  color: white;
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.legend {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.resultados {
+  grid-area: main;
+  padding: var(--spacing-grid);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-grid);
+  align-content: center;
+}
+
+.tarjeta {
+  background-color: var(--primary-color);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta img {
+  width: 100%;
+  aspect-ratio: 3 / 2; /* Mantiene una proporción fija de ancho/alto (ideal para 300x200) */
+  object-fit: cover;   /* Evita que la imagen se deforme, recortándola elegantemente si es necesario */
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.tarjeta p {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.tarjeta .precio {
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.tarjeta button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.tarjeta button:hover {
+  opacity: 0.8;
+}
+
+.pie {
+  grid-area: footer;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pie h4 {
+  color: var(--color-text);
+  text-decoration: underline;
+  margin-bottom: 0.9rem;
+}
+
+.pie a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Pantallas >= 768px*/
+@media (min-width: 768px) {
+  
+  /* 1. Cambiamos el body a 2 columnas: aside de 260px y el resto para el main */
+  body {
+    grid-template-columns: 260px 1fr;
+    grid-template-areas:
+      "header    header"
+      "aside     main"
+      "footer    footer";
+  }
+
+  /* 2. La cabecera vuelve a alinearse horizontalmente */
+  .cabecera {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* 3. El buscador ya no ocupa el 100%, sino un tamaño cómodo */
+  .buscador {
+    width: 350px;
+  }
+
+  /* 4. El menú vuelve a mostrarse en fila horizontal */
+  nav {
+    margin-left: auto;
+    width: auto;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  /* 5. El footer recupera sus 3 columnas */
+  .pie {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* la grilla da resultados sea flexible para mostrar varias columnas */
+  .resultados {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* BREAKPOINT ESCRITORIO Pantallas >= 1024px */
+
+@media (min-width: 1024px) {
+  
+  /* Reaparece el layout de dos columnas: aside a la izquierda, resultados a la derecha */
+  body {
+    grid-template-columns: 260px 1fr;
+    grid-template-areas:
+      "header     header"
+      "aside      resultados"
+      "footer     footer";
+  }
+
+  
+}

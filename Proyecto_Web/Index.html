@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador Rick & Morty</title>
+    <meta name="description" content="Explorador interactivo de personajes del multiverso de Rick & Morty.">
+    
+
+</head>
+<body>
+    <header>
+        <h1>Explorador Rick & Morty</h1>
+        <p>Busca y descubre información sobre tus personajes favoritos de Rick & Morty</p>
+    </header>
+
+    <main>
+       
+        <section id="busqueda">
+            <h2>Buscar Personajes</h2>
+            
+            <form id="formulario-busqueda" action="#" method="get">
+                <label for="nombre">Nombre del personaje:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej. Morty Smith" required>
+
+                <label for="estado">Estado de vida:</label>
+                <select id="estado" name="estado">
+                    <option value="">Cualquiera</option>
+                    <option value="alive">Vivo</option>
+                    <option value="dead">Muerto</option>
+                    <option value="unknown">Desconocido</option>
+                </select>
+
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <hr>
+
+       
+        <section id="resultados">
+            <h2>Resultados</h2>
+            <p>Personajes...</p>
+
+            
+            <article class="tarjeta-personaje">
+                <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Foto Rick" width="200" height="200">
+                <h3>Rick Sanchez</h3>
+                <ul>
+                    <li><strong>Especie:</strong> Humano</li>
+                    <li><strong>Estado:</strong> Vivo</li>
+                    <li><strong>Origen:</strong> Tierra</li>
+                </ul>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <h2>Contacto</h2>
+        <p>Correo electrónico: valentina.henao@ucaldas.edu.co</p>
+        <p>Fuente de la información <a href="https://rickandmortyapi.com/" target="_blank">The Rick and Morty API</a>.</p>
+        <p>&copy; 2026. Todos los derechos reservados.</p>
+        
+    </footer>
+</body>
+</html>
