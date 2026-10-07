@@ -1,139 +1,515 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explorador Rick & Morty</title>
     <meta name="description" content="Explorador interactivo de personajes del multiverso de Rick & Morty.">
-    <link rel="stylesheet" href="css/estilos.css">   
-    <link rel="stylesheet" href="../Semana5/tailwind-cli/css/tailwind.css">
+    <!--link rel="stylesheet" href="css/estilos.css"-->
+    <link rel="stylesheet" href="css/tailwind.css">
 
 </head>
-<body>
-    <header>
-        <h1>Explorador Rick & Morty</h1>
-        <p>Busca y descubre información sobre tus personajes favoritos de Rick & Morty</p>
+
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <header class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white">
+
+        <!-- Navbar -->
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+            <!-- Logo / nombre -->
+            <a href="#" class="text-xl font-bold">Rick & Morty</a>
+
+            <!-- Botón hamburguesa -->
+            <button class="md:hidden text-2xl" type="button">
+                ☰
+            </button>
+
+            <!-- Menú -->
+            <ul class="hidden md:flex items-center gap-6">
+                <li>
+                    <a href="#busqueda" class="hover:text-green-500 dark:hover:text-green-400">Buscar</a>
+                </li>
+
+                <li>
+                    <a href="#resultados" class="hover:text-green-500 dark:hover:text-green-400">Personajes</a>
+                </li>
+
+                <li>
+                    <a href="#contacto" class="hover:text-green-500 dark:hover:text-green-400">Contacto</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Presentación -->
+        <div class="text-center px-4 py-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">Explorador Rick & Morty</h1>
+
+            <p class="text-gray-600 dark:text-gray-300">Busca y descubre información sobre tus personajes favoritos de Rick & Morty</p>
+        </div>
+
     </header>
 
     <main>
-       
-        <section id="busqueda">
-            <h2>Buscar Personajes</h2>
-            
-            <form id="formulario-busqueda" action="#" method="get">
-                <label for="nombre">Nombre del personaje:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej. Morty Smith" required>
 
-                <label for="estado">Estado de vida:</label>
-                <select id="estado" name="estado">
-                    <option value="">Cualquiera</option>
-                    <option value="alive">Vivo</option>
-                    <option value="dead">Muerto</option>
-                    <option value="unknown">Desconocido</option>
-                </select>
+        <section
+    id="busqueda"
+        class="bg-white dark:bg-gray-900 p-6 m-4 rounded-lg shadow-md">
 
-                <button type="submit">Buscar</button>
+            <h2 class="text-2xl font-bold mb-4">Buscar Personajes</h2>
+
+            <form id="formulario-busqueda" action="#" method="get" class="flex flex-col md:flex-row md:items-end gap-4">
+                <!-- Cambié "flex-col" a "flex-row" para que el formulario cambie dependiendo del tamaño de pantalla -->
+
+                <!-- Nombre -->
+                <div class="flex-1"> <!-- dos elementos ocupan el espacio disponible cuando estan en fila-->
+                    <label for="nombre" class="block mb-2 font-medium">Nombre del personaje:</label>
+
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Morty Smith" required
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg">
+                </div>
+
+                <!-- Estado -->
+                <div class="flex-1">
+                    <label for="estado" class="block mb-2 font-medium">Estado de vida:</label>
+
+                    <select id="estado" name="estado" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        <option value="">Cualquiera</option>
+                        <option value="alive">Vivo</option>
+                        <option value="dead">Muerto</option>
+                        <option value="unknown">Desconocido</option>
+                    </select>
+                </div>
+
+                <!-- Botón -->
+                <div>
+                    <button type="submit"
+                        class="w-full md:w-auto px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-700">Buscar</button>
+                </div>
             </form>
+
         </section>
 
-        <hr>
+        <hr class="border-gray-300 dark:border-gray-700">
+        <section id="resultados" class="p-6">
 
-       
-        <section id="resultados">
-            <h2>Resultados</h2>
-            <p>Personajes...</p>
-            <div class="contenedor-personajes">
+            <h2 class="text-3xl font-bold text-center mb-3">
+                Resultados
+            </h2>
 
-            
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+            <p class="text-center text-gray-600 mb-6">
+                Personajes del universo de Rick & Morty
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                <!-- Personaje 1 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Rick Sanchez
+                    </h3>
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/4.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Earth (C-137)</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-rick" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/5.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/6.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                <!-- Personaje 2 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty Smith"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/7.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Morty Smith
+                    </h3>
 
-            <article class="tarjeta-personaje">
-                <img src="https://rickandmortyapi.com/api/character/avatar/8.jpeg" alt="Foto Rick" width="200" height="200">
-                <h3>Rick Sanchez</h3>
-                <ul>
-                    <li><strong>Especie:</strong> Humano</li>
-                    <li><strong>Estado:</strong> Vivo</li>
-                    <li><strong>Origen:</strong> Tierra</li>
-                </ul>
-            </article>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Earth (C-137)</li>
+                    </ul>
+
+                    <button type="button" commandfor="detalle-morty" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 3 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer Smith"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Summer Smith
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Earth (Replacement Dimension)</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-summer" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 4 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/4.jpeg" alt="Beth Smith"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Beth Smith
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Earth (Replacement Dimension)</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-beth" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 5 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/5.jpeg" alt="Jerry Smith"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Jerry Smith
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Earth (Replacement Dimension)</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-jerry" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 6 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/6.jpeg" alt="Abadango Cluster Princess"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Abadango Cluster Princess
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Alien</li>
+                        <li><strong>Estado:</strong> Alive</li>
+                        <li><strong>Origen:</strong> Abadango</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-abadango" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 7 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/7.jpeg" alt="Abradolf Lincler"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Abradolf Lincler
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Unknown</li>
+                        <li><strong>Origen:</strong> Earth (Replacement Dimension)</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-abradolf" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
+
+                <!-- Personaje 8 -->
+                <article class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden p-4 flex flex-col">
+                    <img src="https://rickandmortyapi.com/api/character/avatar/8.jpeg" alt="Adjudicator Rick"
+                        class="w-48 h-48 object-cover rounded-full mx-auto">
+
+                    <h3 class="text-xl font-bold text-center mt-4 mb-3">
+                        Adjudicator Rick
+                    </h3>
+
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><strong>Especie:</strong> Human</li>
+                        <li><strong>Estado:</strong> Dead</li>
+                        <li><strong>Origen:</strong> Unknown</li>
+                    </ul>
+                    <button type="button" commandfor="detalle-adjudicator" command="show-modal"
+                        class="mt-4 w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Ver detalle
+                    </button>
+                </article>
+
             </div>
         </section>
+
+        <dialog id="detalle-rick" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Rick Sanchez
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Earth (C-137)</p>
+                    <p><strong>Género:</strong> Male</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+
+        </dialog>
+
+        <dialog id="detalle-morty" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Morty Smith
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty Smith"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Earth (C-137)</p>
+                    <p><strong>Género:</strong> Male</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-summer" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Summer Smith
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer Smith"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Earth (Replacement Dimension)</p>
+                    <p><strong>Género:</strong> Female</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-beth" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Beth Smith
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/4.jpeg" alt="Beth Smith"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Earth (Replacement Dimension)</p>
+                    <p><strong>Género:</strong> Female</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-jerry" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Jerry Smith
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/5.jpeg" alt="Jerry Smith"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Earth (Replacement Dimension)</p>
+                    <p><strong>Género:</strong> Male</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-princess" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Abadango Cluster Princess
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/6.jpeg" alt="Abadango Cluster Princess"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Alien</p>
+                    <p><strong>Estado:</strong> Alive</p>
+                    <p><strong>Origen:</strong> Abadango</p>
+                    <p><strong>Género:</strong> Female</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-lincler" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Abradolf Lincler
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/7.jpeg" alt="Abradolf Lincler"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Unknown</p>
+                    <p><strong>Origen:</strong> Earth (Replacement Dimension)</p>
+                    <p><strong>Género:</strong> Male</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog id="detalle-adjudicator" class="rounded-xl p-0 w-11/12 max-w-lg shadow-2xl">
+            <div class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    Adjudicator Rick
+                </h2>
+
+                <img src="https://rickandmortyapi.com/api/character/avatar/8.jpeg" alt="Adjudicator Rick"
+                    class="w-40 h-40 object-cover rounded-full mx-auto mb-4">
+
+                <div class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <p><strong>Especie:</strong> Human</p>
+                    <p><strong>Estado:</strong> Dead</p>
+                    <p><strong>Origen:</strong> Unknown</p>
+                    <p><strong>Género:</strong> Male</p>
+                </div>
+
+                <form method="dialog" class="mt-6">
+                    <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+                        Cerrar
+                    </button>
+                </form>
+
+            </div>
+        </dialog>
+
     </main>
 
-    <footer>
-        <h2>Contacto</h2>
-        <p>Correo electrónico: valentina.henao@ucaldas.edu.co</p>
-        <p>Fuente de la información <a href="https://rickandmortyapi.com/" target="_blank">The Rick and Morty API</a>.</p>
-        <p>&copy; 2026. Todos los derechos reservados.</p>
-        
-    </footer>
+    <footer id="contacto" class="bg-gray-900 dark:bg-black text-white mt-10 px-6 py-8">
+
+    <div class="max-w-7xl mx-auto text-center">
+
+        <h2 class="text-2xl font-bold mb-4">Contacto</h2>
+
+        <p class="text-gray-300 mb-2">Correo electrónico: valentina.henao@ucaldas.edu.co</p>
+
+        <p class="text-gray-300 mb-2">Fuente de la información:<a
+                href="https://rickandmortyapi.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-green-400 hover:text-green-300 underline">
+                The Rick and Morty API
+            </a>
+        </p>
+
+        <p class="text-gray-400 text-sm mt-4">
+            &copy; 2026. Todos los derechos reservados.
+        </p>
+
+    </div>
+
+</footer>
 </body>
+
 </html>
