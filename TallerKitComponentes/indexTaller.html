@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090b14">
+    <title>Multiverso · Personajes</title>
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="js/personajes.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="navbar">
+        <a href="#" class="navbar__brand" aria-label="Multiverso, inicio">
+            <span class="brand__icon" aria-hidden="true">✳</span>
+            MULTIVERSO<span class="brand__accent">.DB</span>
+        </a>
+        <nav class="navbar__menu" aria-label="Navegación principal">
+            <a href="#contenido" aria-current="page">Personajes</a>
+            <a href="https://rickandmortyapi.com/" target="_blank" rel="noreferrer">Rick and Morty API ↗</a>
+        </nav>
+    </header>
+
+    <main id="contenido" class="page-shell">
+        <section class="intro" aria-labelledby="titulo-principal">
+            <p class="eyebrow"><span class="eyebrow__pulse" aria-hidden="true"></span> ARCHIVO INTERDIMENSIONAL</p>
+            <h1 id="titulo-principal" class="text-slate-900 dark:text-slate-100">Explora el <span>multiverso</span></h1>
+            <p class="intro__copy">Busca entre los registros. Cada personaje tiene una historia, un origen y probablemente demasiados problemas.</p>
+        </section>
+
+        <section class="filters" aria-labelledby="titulo-filtros">
+            <h2 id="titulo-filtros" class="visually-hidden">Filtrar personajes</h2>
+            <form id="filtros-form" class="filters__form">
+                <label class="filter" for="status">
+                    <span>Estado</span>
+                    <select id="status" name="status" class="bg-white text-slate-900 border-slate-300 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-800">
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="">Todos los estados</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="alive">Alive</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="dead">Dead</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="unknown">Unknown</option>
+                    </select>
+                </label>
+
+                <label class="filter" for="species">
+                    <span>Especie</span>
+                    <input type="search" id="species" name="species" placeholder="Ej. Human" class="bg-white text-slate-900 border-slate-300 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-800">
+                </label>
+
+                <label class="filter" for="gender">
+                    <span>Género</span>
+                    <select id="gender" name="gender" class="bg-white text-slate-900 border-slate-300 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-800">
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="">Todos los géneros</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="female">Female</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="male">Male</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="genderless">Genderless</option>
+                        <option class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100" value="unknown">Unknown</option>
+                    </select>
+                </label>
+
+                <button class="button button--search" type="submit">Buscar <span aria-hidden="true">↗</span></button>
+            </form>
+        </section>
+
+        <section class="catalog" aria-labelledby="titulo-catalogo">
+            <div class="catalog__heading">
+                <div>
+                    <p class="eyebrow">BASE DE DATOS</p>
+                    <h2 id="titulo-catalogo" class="text-slate-900 dark:text-slate-100">Personajes <span class="catalog__count" id="contador-personajes"></span></h2>
+                </div>
+                <p class="catalog__source">Datos en tiempo real · Rick and Morty API</p>
+            </div>
+
+            <p id="estado-catalogo" class="catalog__message" role="status" aria-live="polite">Conectando con el archivo interdimensional…</p>
+            <div id="error-catalogo" class="catalog__error" role="alert" hidden></div>
+            <div id="cards" class="cards" aria-busy="true"></div>
+            <button id="cargar-mas" class="button button--more" type="button" hidden>Cargar más personajes</button>
+        </section>
+    </main>
+
+    <dialog class="modal border border-slate-200 bg-white text-slate-900 backdrop:bg-slate-900/50 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 dark:backdrop:bg-black/80" id="modal-personaje" aria-labelledby="modal-nombre" aria-describedby="modal-mensaje">
+        <div class="modal__card modal-body border border-slate-200 bg-white text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100">
+            <header class="modal__header">
+                <div class="modal__identity">
+                    <img class="modal__avatar" id="modal-imagen" src="" alt="" width="88" height="88" hidden>
+                    <div class="modal__identity-copy">
+                        <p class="eyebrow">FICHA DE PERSONAJE</p>
+                        <h2 class="modal__name text-slate-900 dark:text-slate-100" id="modal-nombre">Cargando personaje…</h2>
+                        <span class="status-badge" id="modal-status" hidden></span>
+                    </div>
+                </div>
+                <button class="icon-button" id="cerrar-modal-icono" type="button" aria-label="Cerrar detalle">&times;</button>
+            </header>
+
+            <div class="modal__body">
+                <p class="modal__message" id="modal-mensaje" role="status" aria-live="polite">Consultando el registro del personaje…</p>
+                <div class="modal__error" id="error-modal" role="alert" hidden>
+                    <p id="error-modal-texto"></p>
+                    <button class="button button--retry" id="reintentar-detalle" type="button">Reintentar</button>
+                </div>
+
+                <dl class="details text-slate-700 dark:text-slate-300" id="modal-detalles" hidden>
+                    <div class="detail border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+                        <dt class="text-slate-500 dark:text-slate-400">Especie</dt>
+                        <dd class="text-slate-900 dark:text-slate-100" id="modal-especie"></dd>
+                    </div>
+                    <div class="detail border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+                        <dt class="text-slate-500 dark:text-slate-400">Género</dt>
+                        <dd class="text-slate-900 dark:text-slate-100" id="modal-genero"></dd>
+                    </div>
+                    <div class="detail border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+                        <dt class="text-slate-500 dark:text-slate-400">Origen</dt>
+                        <dd class="text-slate-900 dark:text-slate-100" id="modal-origen"></dd>
+                    </div>
+                    <div class="detail border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+                        <dt class="text-slate-500 dark:text-slate-400">Ubicación actual</dt>
+                        <dd class="text-slate-900 dark:text-slate-100" id="modal-ubicacion"></dd>
+                    </div>
+                    <div class="detail detail--episodes border border-lime-200 bg-lime-50 dark:border-slate-800 dark:bg-slate-900">
+                        <dt class="text-slate-500 dark:text-slate-400">Total de episodios</dt>
+                        <dd class="text-slate-900 dark:text-slate-100"><span id="modal-episodios"></span><span class="detail__suffix"> apariciones</span></dd>
+                    </div>
+                </dl>
+            </div>
+
+            <footer class="modal__footer">
+                <span class="modal__footnote"><span aria-hidden="true">✳</span> REGISTRO INTERDIMENSIONAL</span>
+                <button class="button button--close" id="cerrar-modal" type="button">Cerrar</button>
+            </footer>
+        </div>
+    </dialog>
+</body>
+</html>
