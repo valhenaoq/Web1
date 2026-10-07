@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiverso Explorer</title>
+
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<body class="min-h-dvh bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <!--
+    PASO 09 · Dark mode (resultado final)
+    Qué cambia: Las 5 parejas dark: en body, header, menú, formulario, tarjetas, footer y modal.
+    Compruébalo: DevTools → Rendering → Emulate prefers-color-scheme: dark. Ningún elemento
+    queda blanco ni con texto ilegible.
+  -->
+  <header class="sticky top-0 z-10 bg-white shadow dark:bg-slate-900 dark:shadow-slate-950">
+    <nav class="relative mx-auto flex max-w-6xl items-center justify-between p-4">
+      <a href="#" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+        Multiverso<span class="text-slate-900 dark:text-white">Explorer</span>
+      </a>
+      <button id="btn-menu" type="button"
+              class="rounded-lg p-2 text-2xl hover:bg-slate-100 md:hidden dark:hover:bg-slate-800"
+              aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
+      <ul id="menu"
+          class="absolute top-full right-0 left-0 hidden flex-col gap-1 bg-white p-4 shadow-lg
+                 md:static md:flex md:flex-row md:gap-6 md:bg-transparent md:p-0 md:shadow-none
+                 dark:bg-slate-900">
+        <li><a href="#" class="block rounded-lg px-3 py-2 font-medium text-indigo-600 md:p-0 dark:text-indigo-400">Personajes</a></li>
+        <li><a href="#" class="block rounded-lg px-3 py-2 text-slate-700 hover:bg-slate-100 hover:text-indigo-600 md:p-0 md:hover:bg-transparent dark:text-slate-300 dark:hover:bg-slate-800">Episodios</a></li>
+        <li><a href="#" class="block rounded-lg px-3 py-2 text-slate-700 hover:bg-slate-100 hover:text-indigo-600 md:p-0 md:hover:bg-transparent dark:text-slate-300 dark:hover:bg-slate-800">Favoritos</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="mx-auto max-w-6xl p-4">
+    <h1 class="mt-4 text-3xl font-bold md:text-4xl">Personajes de Rick and Morty</h1>
+    <p class="mt-1 text-slate-500 dark:text-slate-400">8 de 826 personajes · datos escritos a mano hasta la semana 8</p>
+    <form class="my-6 flex flex-col gap-3 md:flex-row" role="search">
+      <label for="busqueda" class="sr-only">Buscar personaje</label>
+      <input id="busqueda" type="search" placeholder="Buscar por nombre…" minlength="2"
+             class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2
+                   focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none
+                   user-invalid:border-rose-500
+                   dark:border-slate-600 dark:bg-slate-800 dark:focus:ring-indigo-900">
+      <label for="filtro-estado" class="sr-only">Filtrar por estado</label>
+      <select id="filtro-estado"
+              class="rounded-lg border border-slate-300 bg-white px-3 py-2
+                   focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none
+                   dark:border-slate-600 dark:bg-slate-800 dark:focus:ring-indigo-900">
+        <option value="">Todos los estados</option>
+        <option value="alive">Vivos</option>
+        <option value="dead">Muertos</option>
+        <option value="unknown">Desconocido</option>
+      </select>
+      <button type="submit"
+              class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white transition
+                     hover:bg-indigo-700 active:scale-95">
+        Buscar
+      </button>
+    </form>
+    <h2 class="mt-6 mb-3 text-sm font-semibold tracking-wide text-slate-500 uppercase dark:text-slate-400">Resultados</h2>
+    <section class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Rick Sanchez</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · Earth (C-137)</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Rick Sanchez" data-imagen="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+        data-estado="Vivo" data-especie="Human" data-origen="Earth (C-137)" data-ubicacion="Citadel of Ricks">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" alt="Morty Smith"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Morty Smith</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · unknown</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Morty Smith" data-imagen="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+        data-estado="Vivo" data-especie="Human" data-origen="unknown" data-ubicacion="Citadel of Ricks">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/3.jpeg" alt="Summer Smith"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Summer Smith</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · Earth (Replacement Dimension)</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Summer Smith" data-imagen="https://rickandmortyapi.com/api/character/avatar/3.jpeg"
+        data-estado="Vivo" data-especie="Human" data-origen="Earth (Replacement Dimension)" data-ubicacion="Earth (Replacement Dimension)">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/4.jpeg" alt="Beth Smith"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Beth Smith</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · Earth (Replacement Dimension)</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Beth Smith" data-imagen="https://rickandmortyapi.com/api/character/avatar/4.jpeg"
+        data-estado="Vivo" data-especie="Human" data-origen="Earth (Replacement Dimension)" data-ubicacion="Earth (Replacement Dimension)">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/5.jpeg" alt="Jerry Smith"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Jerry Smith</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · Earth (Replacement Dimension)</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Jerry Smith" data-imagen="https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+        data-estado="Vivo" data-especie="Human" data-origen="Earth (Replacement Dimension)" data-ubicacion="Earth (Replacement Dimension)">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/6.jpeg" alt="Abadango Cluster Princess"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Abadango Cluster Princess</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-emerald-100 text-emerald-700">● Vivo</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Alien · Abadango</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Abadango Cluster Princess" data-imagen="https://rickandmortyapi.com/api/character/avatar/6.jpeg"
+        data-estado="Vivo" data-especie="Alien" data-origen="Abadango" data-ubicacion="Abadango">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/7.jpeg" alt="Abradolf Lincler"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Abradolf Lincler</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-slate-200 text-slate-600">● Desconocido</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · Earth (Replacement Dimension)</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Abradolf Lincler" data-imagen="https://rickandmortyapi.com/api/character/avatar/7.jpeg"
+        data-estado="Desconocido" data-especie="Human (Genetic experiment)" data-origen="Earth (Replacement Dimension)" data-ubicacion="Testicle Monster Dimension">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+      <article class="flex flex-col overflow-hidden rounded-2xl bg-white shadow group transition hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+        <div class="overflow-hidden">
+          <img src="https://rickandmortyapi.com/api/character/avatar/8.jpeg" alt="Adjudicator Rick"
+              class="aspect-square w-full object-cover transition group-hover:scale-105">
+        </div>
+        <div class="flex flex-1 flex-col gap-2 p-4">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Adjudicator Rick</h3>
+          <span class="w-fit rounded-full px-2.5 py-0.5 text-xs font-semibold bg-rose-100 text-rose-700">● Muerto</span>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Human · unknown</p>
+          <button type="button" class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-nombre="Adjudicator Rick" data-imagen="https://rickandmortyapi.com/api/character/avatar/8.jpeg"
+        data-estado="Muerto" data-especie="Human" data-origen="unknown" data-ubicacion="Citadel of Ricks">
+            Ver detalle
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="mt-12 border-t border-slate-200 py-6 text-center text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
+    Datos: <a href="https://rickandmortyapi.com" class="underline hover:text-indigo-600">The Rick and Morty API</a> · Hecho con Tailwind CSS v4
+  </footer>
+  <dialog id="modal-detalle" aria-labelledby="modal-nombre"
+          class="m-auto w-full max-w-md overflow-hidden rounded-2xl bg-white p-0 shadow-2xl
+                 backdrop:bg-slate-900/60 backdrop:backdrop-blur-sm
+                 dark:bg-slate-800 dark:text-slate-100">
+    <img id="modal-img" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez" class="aspect-square w-full object-cover">
+    <div class="space-y-4 p-6">
+      <h2 id="modal-nombre" class="text-2xl font-bold text-slate-900 dark:text-white">Rick Sanchez</h2>
+      <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+        <dt class="text-slate-500 dark:text-slate-400">Estado</dt> <dd id="modal-estado" class="font-medium">Vivo</dd>
+        <dt class="text-slate-500 dark:text-slate-400">Especie</dt> <dd id="modal-especie" class="font-medium">Human</dd>
+        <dt class="text-slate-500 dark:text-slate-400">Origen</dt> <dd id="modal-origen" class="font-medium">Earth (C-137)</dd>
+        <dt class="text-slate-500 dark:text-slate-400">Ubicación</dt> <dd id="modal-ubicacion" class="font-medium">Citadel of Ricks</dd>
+      </dl>
+      <form method="dialog">
+        <button class="w-full rounded-lg border border-slate-300 py-2 font-semibold
+                       hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-700">
+          Cerrar
+        </button>
+      </form>
+    </div>
+  </dialog>
+  <script>
+    // --- Menú móvil: mostrar/ocultar y avisar al lector de pantalla ---
+    const btnMenu = document.getElementById('btn-menu');
+    const menu = document.getElementById('menu');
+    btnMenu.addEventListener('click', function () {
+      menu.classList.toggle('hidden');                  // si tiene hidden se lo quita, si no se lo pone
+      const abierto = !menu.classList.contains('hidden');
+      btnMenu.setAttribute('aria-expanded', abierto);   // true / false
+    });
+    // --- Modal: cada botón "Ver detalle" lo llena con SUS data-* y lo abre ---
+    const modal = document.getElementById('modal-detalle');
+    document.querySelectorAll('.btn-detalle').forEach(function (boton) {
+      boton.addEventListener('click', function () {
+        const datos = boton.dataset;   // data-nombre → datos.nombre, data-estado → datos.estado…
+        document.getElementById('modal-nombre').textContent = datos.nombre;
+        document.getElementById('modal-img').src = datos.imagen;
+        document.getElementById('modal-img').alt = datos.nombre;
+        document.getElementById('modal-estado').textContent = datos.estado;
+        document.getElementById('modal-especie').textContent = datos.especie;
+        document.getElementById('modal-origen').textContent = datos.origen;
+        document.getElementById('modal-ubicacion').textContent = datos.ubicacion;
+        modal.showModal();             // fondo oscuro + Esc + foco atrapado, gratis
+      });
+    });
+    // Clic en el fondo oscuro: el target es el propio <dialog>, no algo de adentro
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.close();
+    });
+  </script>
+</body>
+</html>

@@ -134,3 +134,11 @@ header p {
     gap: 20px;
     align-items: stretch; /* los elementos del Grid se estiran para ocupar la altura disponible de su fila*/
 }
+
+
+/*Aplicar estilos dependiendo el tamaño de la pantalla*/
+@media (max-width: 768px) {
+    .contenedor-personajes {
+        grid-template-columns: 1fr;
+    }
+}
