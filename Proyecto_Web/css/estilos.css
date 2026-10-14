@@ -1,144 +1,287 @@
-/* Reset básico */
+:root {
+    color-scheme: light dark;
+    --color-fondo: #f1f5f9;
+    --color-superficie: #ffffff;
+    --color-texto: #0f172a;
+    --color-texto-secundario: #475569;
+    --color-borde: #cbd5e1;
+    --color-acento: #166534;
+    --color-acento-hover: #14532d;
+}
+
 * {
     box-sizing: border-box;
 }
 
-/* Variables de color */
-:root {
-    --color-principal: #20232a;
-    --color-fondo: #f0f0f0;
-    --color-texto: #222;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Estilos generales */
 body {
+    min-width: 320px;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: var(--color-fondo);
+    background: var(--color-fondo);
     color: var(--color-texto);
-}
-
-/* organizo estilo de las tarjetas Box */
-
-.tarjeta-personaje {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* agrega sombra suave a la tarjeta*/
-    display: flex; /*Convierte la tarjeta en un contenedor Flexbox*/
-    flex-direction: column; /* los elementos se organizan de arriba hacia abajo*/
-    min-height: 420px; /*altura minima*/
-}
-
-.tarjeta-personaje img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%; /*para que las imagenes se vean en circulo*/
-    display: block;
-    margin: 0 auto;
-}
-
-/* nombre personajes*/
-.tarjeta-personaje h3 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* lista de información*/
-.tarjeta-personaje ul {
-    padding-left: 20px;
-    line-height: 1.8;
-    margin-bottom: 0; /*El navegador coloca automáticamente un margen en las listas*/
-}
-
-/* titulo RESULTADOS*/ 
-#resultados {
-    padding: 20px;
-}
-
-#resultados h2 {
-    text-align: center;
-    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: var(--color-principal);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    box-shadow: 0 2px 8px rgb(15 23 42 / 8%);
 }
 
-header h1 {
-    margin: 0 0 10px 0;
+header nav a,
+#menu a {
+    color: inherit;
 }
 
-header p {
-    margin: 0;
+header nav a:hover,
+#menu a:hover {
+    color: var(--color-acento);
 }
 
-/* seccion BUSQUEDA*/
-#busqueda {
-    background-color: white;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+#btn-menu {
+    color: var(--color-texto);
 }
 
-#busqueda h2 {
-    margin-top: 0;
+#buscar {
+    margin: 1.5rem auto;
+    max-width: 80rem;
+    border: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+    color: var(--color-texto);
 }
 
-#formulario-busqueda {
-    margin-top: 15px;
+#buscar h2,
+#resultados h2 {
+    color: var(--color-texto);
 }
 
-#formulario-busqueda label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
+#form-busqueda label {
+    color: var(--color-texto);
 }
 
-#formulario-busqueda input,
-#formulario-busqueda select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+#form-busqueda input,
+#form-busqueda select {
+    min-height: 2.75rem;
+    border: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+    color: var(--color-texto);
 }
 
-/* boton BUSCAR*/
-#formulario-busqueda button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: var(--color-principal);
-    color: white;
-    border: none;
-    border-radius: 5px;
+#form-busqueda input::placeholder {
+    color: var(--color-texto-secundario);
+    opacity: 1;
+}
+
+#form-busqueda button,
+#grilla article button,
+#modal button {
+    min-height: 2.75rem;
+    border: 1px solid #1e293b;
+    background: #1e293b;
+    color: #ffffff;
+    font-weight: 600;
     cursor: pointer;
 }
 
-#formulario-busqueda button:hover {
-    background-color: #3a3f47;
+#form-busqueda button:hover,
+#grilla article button:hover,
+#modal button:hover {
+    background: #334155;
 }
 
+#form-busqueda button[type="reset"] {
+    border-color: var(--color-borde);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
 
-/*GRID*/
-.contenedor-personajes {
+#form-busqueda button[type="reset"]:hover {
+    background: var(--color-fondo);
+}
+
+#resultados {
+    max-width: 84rem;
+    margin: 0 auto;
+}
+
+#resultados > p {
+    color: var(--color-texto-secundario);
+}
+
+#grilla {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    align-items: stretch; /* los elementos del Grid se estiran para ocupar la altura disponible de su fila*/
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
+#grilla > article {
+    display: flex;
+    min-width: 0;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--color-borde);
+    border-radius: 0.75rem;
+    background: var(--color-superficie);
+    color: var(--color-texto);
+    box-shadow: 0 4px 12px rgb(15 23 42 / 10%);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
 
-/*Aplicar estilos dependiendo el tamaño de la pantalla*/
-@media (max-width: 768px) {
-    .contenedor-personajes {
-        grid-template-columns: 1fr;
+#grilla > article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgb(15 23 42 / 14%);
+}
+
+#grilla article img {
+    width: min(12rem, 100%);
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#grilla article h3 {
+    color: var(--color-texto);
+    overflow-wrap: anywhere;
+}
+
+#grilla article ul {
+    padding-left: 1.25rem;
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+#grilla article li strong {
+    color: var(--color-texto);
+}
+
+#grilla article span[class*="bg-green-100"] {
+    background: #dcfce7;
+    color: #166534;
+}
+
+#grilla article span[class*="bg-red-100"] {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+#grilla article span[class*="bg-slate-200"] {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+#modal {
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    border: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+#modal > div {
+    background: var(--color-superficie);
+    color: var(--color-texto);
+}
+
+#modal dt {
+    color: var(--color-texto-secundario);
+}
+
+#modal dd {
+    overflow-wrap: anywhere;
+    color: var(--color-texto);
+}
+
+footer {
+    margin-top: 2rem;
+    background: #0f172a;
+    color: #ffffff;
+}
+
+footer p {
+    color: #cbd5e1;
+}
+
+footer a {
+    color: #86efac;
+}
+
+footer a:hover {
+    color: #bbf7d0;
+}
+
+@media (min-width: 40rem) {
+    #grilla {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 60rem) {
+    #grilla {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 75rem) {
+    #grilla {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 39.99rem) {
+    #buscar {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    #resultados {
+        padding: 1rem;
+    }
+
+    #form-busqueda button {
+        flex: 1 1 0;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-fondo: #0f172a;
+        --color-superficie: #1e293b;
+        --color-texto: #f1f5f9;
+        --color-texto-secundario: #cbd5e1;
+        --color-borde: #475569;
+        --color-acento: #86efac;
+        --color-acento-hover: #bbf7d0;
+    }
+
+    #grilla article span[class*="bg-green-100"] {
+        background: #14532d;
+        color: #bbf7d0;
+    }
+
+    #grilla article span[class*="bg-red-100"] {
+        background: #7f1d1d;
+        color: #fecaca;
+    }
+
+    #grilla article span[class*="bg-slate-200"] {
+        background: #334155;
+        color: #e2e8f0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    #grilla > article {
+        transition: none;
     }
 }
