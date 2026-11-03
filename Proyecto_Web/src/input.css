@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+@source "../Index.html";
+@source "../js";

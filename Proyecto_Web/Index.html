@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="motion-safe:scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explorador Rick & Morty</title>
     <meta name="description" content="Explorador interactivo de personajes del multiverso de Rick & Morty.">
-    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/tailwind.css">
 
     <!-- Módulo ES6: se ejecuta cuando el HTML ya está listo -->
-    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/main.js"></script>
 
 </head>
 
-<body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-    <header class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm">
+<body class="min-w-[320px] scheme-light-dark bg-slate-100 font-[Arial,sans-serif] text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+    <header class="bg-white text-slate-900 shadow-[0_2px_8px_rgb(15_23_42_/_8%)] dark:bg-slate-800 dark:text-white">
         <!-- Navbar -->
         <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
 
@@ -23,59 +22,75 @@
             <a href="#" class="text-xl font-bold">Rick & Morty</a>
 
             <!-- Botón hamburguesa -->
-            <button id="btn-menu" type="button" class="md:hidden text-2xl px-2"
-                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+            <button id="btn-menu" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú"
+                class="px-2 text-2xl text-slate-900 md:hidden dark:text-white">
                 ☰
             </button>
 
             <!-- Menú -->
-            <ul id="menu" class="hidden w-full mt-4 space-y-3 md:flex md:w-auto md:mt-0 md:items-center md:gap-6 md:space-y-0">
+            <ul id="menu" class="mt-4 hidden w-full space-y-3 md:mt-0 md:flex md:w-auto md:items-center md:gap-6 md:space-y-0">
                 <li>
-                    <a href="#buscar" class="block hover:text-green-500 dark:hover:text-green-400">Buscar</a>
+                    <a href="#buscar" class="block hover:text-green-800 dark:hover:text-green-300">Buscar</a>
                 </li>
-
                 <li>
-                    <a href="#resultados" class="block hover:text-green-500 dark:hover:text-green-400">Personajes</a>
-                </li>
-
-                <li>
-                    <a href="#contacto" class="block hover:text-green-500 dark:hover:text-green-400">Contacto</a>
+                    <a href="#contacto" class="block hover:text-green-800 dark:hover:text-green-300">Contacto</a>
                 </li>
             </ul>
 
         </nav>
 
         <!-- Presentación -->
-        <div class="text-center px-4 py-8">
-            <h1 class="text-3xl md:text-4xl font-bold mb-3">Explorador Rick & Morty</h1>
+        <div class="px-4 py-8 text-center">
+            <h1 class="mb-3 text-3xl font-bold md:text-4xl">Explorador Rick & Morty</h1>
 
             <p class="text-slate-600 dark:text-slate-300">Busca y descubre información sobre tus personajes favoritos de Rick & Morty</p>
         </div>
 
+    <nav class="mx-auto max-w-7xl overflow-x-auto px-4" aria-label="Secciones principales">
+        <div id="tabs-principales" class="flex min-w-max gap-1 border-b border-slate-300 dark:border-slate-700" role="tablist" aria-label="Secciones de la aplicación">
+            <button id="tab-personajes" type="button" role="tab" aria-selected="true" aria-controls="panel-personajes" data-tab="personajes"
+                class="border-b-2 border-green-700 px-4 py-3 text-sm font-semibold text-green-800 dark:text-green-300">
+                Personajes
+            </button>
+            <button id="tab-episodios" type="button" role="tab" aria-selected="false" aria-controls="panel-episodios" data-tab="episodios"
+                class="border-b-2 border-transparent px-4 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+                Episodios
+            </button>
+            <button id="tab-ubicaciones" type="button" role="tab" aria-selected="false" aria-controls="panel-ubicaciones" data-tab="ubicaciones"
+                class="border-b-2 border-transparent px-4 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+                Ubicaciones
+            </button>
+            <button id="tab-dashboard" type="button" role="tab" aria-selected="false" aria-controls="panel-dashboard" data-tab="dashboard"
+                class="border-b-2 border-transparent px-4 py-3 text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+                Dashboard
+            </button>
+        </div>
+    </nav>
     </header>
 
-    <main>
+    <main class="mx-auto max-w-7xl">
 
+      <div id="panel-personajes" role="tabpanel" aria-labelledby="tab-personajes" data-panel="personajes">
         <section id="buscar"
-            class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-6 m-4 rounded-lg shadow-md">
+            class="mx-auto my-6 max-w-7xl rounded-lg border border-slate-300 bg-white p-6 text-slate-900 shadow-md dark:border-slate-600 dark:bg-slate-800 dark:text-white max-[39.99rem]:m-4 max-[39.99rem]:p-4">
 
-            <h2 class="text-2xl font-bold mb-4">Buscar Personajes</h2>
+            <h2 class="mb-4 text-2xl font-bold">Buscar Personajes</h2>
 
             <form id="form-busqueda" class="flex flex-col md:flex-row md:items-end gap-4">
 
 
                 <!-- Nombre -->
                 <div class="flex-1"> <!-- dos elementos ocupan el espacio disponible cuando estan en fila-->
-                    <label for="busqueda" class="block mb-2 font-medium">Nombre del personaje:</label>
+                    <label for="busqueda" class="mb-2 block font-medium">Nombre del personaje:</label>
 
-                    <input type="search" id="busqueda" name="busqueda" placeholder="Ej. Morty Smith" autocomplete="off" class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white">
+                    <input type="search" id="busqueda" name="busqueda" placeholder="Ej. Morty Smith" autocomplete="off" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 placeholder:text-slate-600 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-300">
                 </div>
 
                 <!-- Estado -->
                 <div class="flex-1">
-                    <label for="filtro-estado" class="block mb-2 font-medium">Estado de vida:</label>
+                    <label for="filtro-estado" class="mb-2 block font-medium">Estado de vida:</label>
 
-                    <select id="filtro-estado" name="estado" class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white">
+                    <select id="filtro-estado" name="estado" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
                         <option value="">Cualquiera</option>
                         <option value="alive">Vivo</option>
                         <option value="dead">Muerto</option>
@@ -86,11 +101,11 @@
                 <!-- Botones -->
                 <div class="flex gap-2">
                     <button type="submit"
-                        class="flex-1 md:flex-none px-6 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600">
+                        class="min-h-11 flex-1 cursor-pointer rounded-lg border border-slate-800 bg-slate-800 px-6 py-2 font-semibold text-white hover:bg-slate-700 md:flex-none">
                         Buscar
                     </button>
                     <button type="reset"
-                        class="flex-1 md:flex-none px-6 py-2 border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700">
+                        class="min-h-11 flex-1 cursor-pointer rounded-lg border border-slate-300 bg-white px-6 py-2 text-slate-900 hover:bg-slate-100 md:flex-none dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700">
                         Limpiar
                     </button>
                 </div>
@@ -100,34 +115,147 @@
         </section>
 
         <hr class="border-slate-300 dark:border-slate-700">
-        <section id="resultados" class="p-6">
+        <section id="resultados" class="mx-auto max-w-[84rem] p-6 max-[39.99rem]:p-4">
 
-            <h2 class="text-3xl font-bold text-center mb-3">
+            <h2 class="mb-3 text-center text-3xl font-bold">
                 Resultados
             </h2>
 
-            <p class="text-center text-slate-600 dark:text-slate-300 mb-2">
+            <p class="mb-2 text-center text-slate-600 dark:text-slate-300">
                 Personajes del universo de Rick & Morty
             </p>
-               <p id="contador" class="text-center text-sm text-slate-500 dark:text-slate-400 mb-6" aria-live="polite"></p>
+            <p id="contador" class="mb-6 text-center text-sm text-slate-500 dark:text-slate-400" aria-live="polite"></p>
 
-            <!-- Se llena desde js/app.js -->
-            <section id="grilla" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-                aria-label="Lista de personajes">
+            <div class="mb-6 flex justify-center gap-3" role="group" aria-label="Filtrar personajes">
+                <button id="ver-todos" type="button" aria-pressed="true"
+                    class="rounded-lg border border-slate-800 bg-slate-800 px-4 py-2 font-semibold text-white hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700">
+                    Todos
+                </button>
+                <button id="ver-favoritos" type="button" aria-pressed="false"
+                    class="rounded-lg border border-slate-300 bg-white px-4 py-2 font-semibold text-slate-900 hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 dark:border-slate-600 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700">
+                    Favoritos
+                </button>
+            </div>
+
+            <div id="estado-cargando" class="hidden py-12 text-center text-slate-600 dark:text-slate-300" role="status" aria-live="polite">
+                <span class="mx-auto mb-3 block size-10 animate-spin rounded-full border-4 border-slate-300 border-t-green-800 motion-reduce:animate-none dark:border-slate-600 dark:border-t-green-300" aria-hidden="true"></span>
+                Cargando personajes...
+            </div>
+
+            <div id="estado-error" class="mx-auto hidden max-w-2xl rounded-lg border border-red-300 bg-red-50 p-5 text-center text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert" aria-live="assertive">
+                <p id="mensaje-error" class="mb-4"></p>
+                <button id="reintentar" type="button" class="min-h-11 rounded-lg border border-slate-800 bg-slate-800 px-6 py-2 font-semibold text-white hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700">
+                    Reintentar
+                </button>
+            </div>
+
+            <!-- Se llena desde js/main.js -->
+            <section id="grilla" class="grid grid-cols-1 items-stretch gap-6 min-[40rem]:grid-cols-2 min-[60rem]:grid-cols-3 min-[75rem]:grid-cols-4"
+                aria-label="Lista de personajes" aria-live="polite">
             </section>
+            <div id="cargar-mas-contenedor" class="mt-8 text-center">
+                <button id="cargar-mas" type="button"
+                    class="min-h-12 rounded-lg border border-slate-800 bg-slate-800 px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 disabled:cursor-not-allowed disabled:opacity-70">
+                    Cargar más
+                </button>
+                <div id="error-cargar-mas" class="mx-auto mt-4 hidden max-w-2xl rounded-lg border border-red-300 bg-red-50 p-4 text-center text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
+                    <p id="mensaje-error-cargar-mas" class="mb-3"></p>
+                    <button id="reintentar-cargar-mas" type="button"
+                        class="rounded-lg border border-slate-800 bg-slate-800 px-5 py-2 font-semibold text-white hover:bg-slate-700">
+                        Reintentar
+                    </button>
+                </div>
+            </div>
         </section>
+      </div>
 
-        <!-- Modal único y reutilizable: su contenido lo llena js/app.js -->
+      <section id="panel-episodios" class="hidden p-6 max-[39.99rem]:p-4" role="tabpanel" aria-labelledby="tab-episodios" data-panel="episodios" hidden>
+        <header class="mb-6 text-center">
+            <h2 class="text-3xl font-bold">Episodios</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Explora los episodios y sus personajes.</p>
+        </header>
+        <form id="form-episodios" class="mb-6 flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-4 shadow-sm md:flex-row md:items-end dark:border-slate-600 dark:bg-slate-800">
+            <div class="flex-1">
+                <label for="buscar-episodio" class="mb-2 block font-medium">Nombre del episodio</label>
+                <input id="buscar-episodio" type="search" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Ej. Pilot">
+            </div>
+            <div class="flex-1">
+                <label for="temporada-episodio" class="mb-2 block font-medium">Temporada</label>
+                <select id="temporada-episodio" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
+                    <option value="">Todas las temporadas</option>
+                    <option value="S01">Temporada 1</option>
+                    <option value="S02">Temporada 2</option>
+                    <option value="S03">Temporada 3</option>
+                    <option value="S04">Temporada 4</option>
+                    <option value="S05">Temporada 5</option>
+                </select>
+            </div>
+            <button type="submit" class="min-h-11 rounded-lg bg-slate-800 px-6 py-2 font-semibold text-white hover:bg-slate-700">Buscar episodios</button>
+        </form>
+        <div id="episodios-cargando" class="hidden py-12 text-center text-slate-600 dark:text-slate-300" role="status" aria-live="polite">
+            <span class="mx-auto mb-3 block size-10 animate-spin rounded-full border-4 border-slate-300 border-t-green-800" aria-hidden="true"></span>Cargando episodios...
+        </div>
+        <div id="episodios-error" class="hidden rounded-lg border border-red-300 bg-red-50 p-5 text-center text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
+            <p id="episodios-error-mensaje" class="mb-4"></p>
+            <button type="button" data-retry="episodios" class="rounded-lg bg-slate-800 px-5 py-2 font-semibold text-white">Reintentar</button>
+        </div>
+        <section id="episodios-grilla" class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Lista de episodios" aria-live="polite"></section>
+        <nav id="episodios-paginacion" class="mt-6 flex items-center justify-between gap-4" aria-label="Paginación de episodios"></nav>
+      </section>
+
+      <section id="panel-ubicaciones" class="hidden p-6 max-[39.99rem]:p-4" role="tabpanel" aria-labelledby="tab-ubicaciones" data-panel="ubicaciones" hidden>
+        <header class="mb-6 text-center">
+            <h2 class="text-3xl font-bold">Ubicaciones</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Explora lugares y sus residentes.</p>
+        </header>
+        <form id="form-ubicaciones" class="mb-6 flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-4 shadow-sm md:flex-row md:items-end dark:border-slate-600 dark:bg-slate-800">
+            <div class="flex-1">
+                <label for="buscar-ubicacion" class="mb-2 block font-medium">Nombre del lugar</label>
+                <input id="buscar-ubicacion" type="search" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Ej. Earth">
+            </div>
+            <div class="flex-1">
+                <label for="tipo-ubicacion" class="mb-2 block font-medium">Tipo de lugar</label>
+                <input id="tipo-ubicacion" type="search" class="min-h-11 w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Ej. Planet">
+            </div>
+            <button type="submit" class="min-h-11 rounded-lg bg-slate-800 px-6 py-2 font-semibold text-white hover:bg-slate-700">Buscar ubicaciones</button>
+        </form>
+        <div id="ubicaciones-cargando" class="hidden py-12 text-center text-slate-600 dark:text-slate-300" role="status" aria-live="polite">
+            <span class="mx-auto mb-3 block size-10 animate-spin rounded-full border-4 border-slate-300 border-t-green-800" aria-hidden="true"></span>Cargando ubicaciones...
+        </div>
+        <div id="ubicaciones-error" class="hidden rounded-lg border border-red-300 bg-red-50 p-5 text-center text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
+            <p id="ubicaciones-error-mensaje" class="mb-4"></p>
+            <button type="button" data-retry="ubicaciones" class="rounded-lg bg-slate-800 px-5 py-2 font-semibold text-white">Reintentar</button>
+        </div>
+        <section id="ubicaciones-grilla" class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Catálogo de ubicaciones" aria-live="polite"></section>
+        <nav id="ubicaciones-paginacion" class="mt-6 flex items-center justify-between gap-4" aria-label="Paginación de ubicaciones"></nav>
+      </section>
+
+      <section id="panel-dashboard" class="hidden p-6 max-[39.99rem]:p-4" role="tabpanel" aria-labelledby="tab-dashboard" data-panel="dashboard" hidden>
+        <header class="mb-6 text-center">
+            <h2 class="text-3xl font-bold">Dashboard de estadísticas</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Resumen del universo de Rick and Morty.</p>
+        </header>
+        <div id="dashboard-cargando" class="hidden py-12 text-center text-slate-600 dark:text-slate-300" role="status" aria-live="polite">
+            <span class="mx-auto mb-3 block size-10 animate-spin rounded-full border-4 border-slate-300 border-t-green-800" aria-hidden="true"></span>Calculando estadísticas...
+        </div>
+        <div id="dashboard-error" class="hidden rounded-lg border border-red-300 bg-red-50 p-5 text-center text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
+            <p id="dashboard-error-mensaje" class="mb-4"></p>
+            <button type="button" data-retry="dashboard" class="rounded-lg bg-slate-800 px-5 py-2 font-semibold text-white">Reintentar</button>
+        </div>
+        <section id="dashboard-contenido" aria-live="polite"></section>
+      </section>
+
+        <!-- Modal único y reutilizable: su contenido lo llena js/main.js -->
         <dialog id="modal" aria-labelledby="modal-titulo"
-            class="m-auto rounded-xl p-0 w-11/12 max-w-lg shadow-2xl backdrop:bg-black/60">
+            class="m-auto max-h-[calc(100dvh-2rem)] w-11/12 max-w-2xl overflow-y-auto rounded-xl border border-slate-300 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-black/60 dark:border-slate-600 dark:bg-slate-800 dark:text-white">
 
-            <div class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white p-6">
+            <div class="bg-white p-0 text-slate-900 dark:bg-slate-800 dark:text-white">
 
                 <div id="modal-contenido"></div>
 
                 <form method="dialog" class="mt-6">
                     <button
-                        class="w-full bg-slate-900 text-white py-2 px-4 rounded-lg hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600">
+                        class="min-h-11 w-full cursor-pointer rounded-lg border border-slate-800 bg-slate-800 px-4 py-2 font-semibold text-white hover:bg-slate-700">
                         Cerrar
                     </button>
                 </form>
@@ -138,24 +266,24 @@
 
     </main>
 
-    <footer id="contacto" class="bg-slate-900 dark:bg-slate-950 text-white mt-10 px-6 py-8">
+    <footer id="contacto" class="mt-10 bg-slate-900 px-6 py-8 text-white dark:bg-slate-950">
 
     <div class="max-w-7xl mx-auto text-center">
 
         <h2 class="text-2xl font-bold mb-4">Contacto</h2>
 
-        <p class="text-slate-300 mb-2">Correo electrónico: valentina.henao@ucaldas.edu.co</p>
+        <p class="mb-2 text-slate-300">Correo electrónico: valentina.henao@ucaldas.edu.co</p>
 
-        <p class="text-slate-300 mb-2">Fuente de la información: <a
+        <p class="mb-2 text-slate-300">Fuente de la información: <a
                 href="https://rickandmortyapi.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-green-400 hover:text-green-300 underline">
+                class="text-green-300 underline hover:text-green-200">
                 The Rick and Morty API
             </a>
         </p>
 
-        <p class="text-slate-400 text-sm mt-4">
+        <p class="mt-4 text-sm text-slate-400">
             &copy; 2026. Todos los derechos reservados.
         </p>
 
